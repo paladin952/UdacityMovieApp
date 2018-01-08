@@ -111,6 +111,9 @@ dependencies {
     compile 'frankiesardo:icepick:3.2.0'
     provided 'frankiesardo:icepick-processor:3.2.0'
 
+    //Multidex
+    compile 'com.android.support:multidex:1.0.0'
+
     testCompile 'junit:junit:4.12'
 
     androidTestCompile "com.android.support:support-annotations:$supportLibraryVersion"

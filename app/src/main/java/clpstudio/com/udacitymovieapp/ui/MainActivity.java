@@ -1,7 +1,9 @@
-package clpstudio.com.udacitymovieapp;
+package clpstudio.com.udacitymovieapp.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import clpstudio.com.udacitymovieapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
