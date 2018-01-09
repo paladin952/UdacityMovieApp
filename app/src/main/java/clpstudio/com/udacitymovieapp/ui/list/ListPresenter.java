@@ -3,6 +3,7 @@ package clpstudio.com.udacitymovieapp.ui.list;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 
+import java.net.UnknownHostException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -67,7 +68,11 @@ public class ListPresenter extends BaseMvpPresenter<ListPresenter.View> {
                 view().showEmptyText();
             }
         }, throwable -> {
-            view().showError(resources.getString(R.string.error_something_went_wrong));
+            if (throwable instanceof UnknownHostException) {
+                view().showError(resources.getString(R.string.error_no_internet));
+            } else {
+                view().showError(resources.getString(R.string.error_something_went_wrong));
+            }
             view().hideProgressBar();
         });
     }
