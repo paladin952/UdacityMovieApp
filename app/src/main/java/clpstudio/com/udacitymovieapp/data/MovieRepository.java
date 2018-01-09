@@ -24,7 +24,7 @@ public class MovieRepository {
         return apiService.getPopularMovies(resources.getString(R.string.api_key));
     }
 
-    public Single<String> getTopRatedMovies() {
+    public Single<PopularMovieModel> getTopRatedMovies() {
         return apiService.getTopRatedMovies(resources.getString(R.string.api_key));
     }
 }

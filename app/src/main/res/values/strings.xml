@@ -5,4 +5,6 @@
     <string name="empty_data">There are no movies yet!</string>
     <string name="details_screen_title">Movie details</string>
     <string name="details_rating">%1$s/10</string>
+    <string name="sort_most_popular">Most popular</string>
+    <string name="sort_top_rated">Top rated</string>
 </resources>

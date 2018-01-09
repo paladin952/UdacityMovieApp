@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import clpstudio.com.udacitymovieapp.MovieApplication;
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.config.glide.GlideRequestOptionUtils;
-import clpstudio.com.udacitymovieapp.data.model.PopularMovie;
+import clpstudio.com.udacitymovieapp.data.model.Movie;
 
 public class DetailsActivity extends AppCompatActivity implements DetailPresenter.View {
 
@@ -37,9 +37,9 @@ public class DetailsActivity extends AppCompatActivity implements DetailPresente
     DetailPresenter detailPresenter;
 
     @InjectExtra
-    PopularMovie popularMovie;
+    Movie popularMovie;
 
-    public static void startActivity(Activity activity, PopularMovie popularMovie) {
+    public static void startActivity(Activity activity, Movie popularMovie) {
         Intent intent = Henson.with(activity)
                 .gotoDetailsActivity()
                 .popularMovie(popularMovie)

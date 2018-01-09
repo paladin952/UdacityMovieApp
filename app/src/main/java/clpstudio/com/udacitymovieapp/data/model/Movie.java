@@ -8,7 +8,7 @@ import org.parceler.Parcel;
 import java.util.List;
 
 @Parcel
-public class PopularMovie {
+public class Movie {
 
     @SerializedName("vote_count")
     Integer voteCount;

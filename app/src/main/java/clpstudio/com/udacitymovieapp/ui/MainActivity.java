@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import clpstudio.com.udacitymovieapp.MovieApplication;
 import clpstudio.com.udacitymovieapp.R;
-import clpstudio.com.udacitymovieapp.data.model.PopularMovie;
+import clpstudio.com.udacitymovieapp.data.model.Movie;
 import clpstudio.com.udacitymovieapp.ui.detail.DetailsActivity;
 import clpstudio.com.udacitymovieapp.ui.list.ListAdapter;
 import clpstudio.com.udacitymovieapp.ui.list.ListPresenter;
@@ -58,7 +61,29 @@ public class MainActivity extends AppCompatActivity implements ListPresenter.Vie
     }
 
     @Override
-    public void showData(List<PopularMovie> movies) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.list_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.most_popular:
+                listPresenter.onMostPopularClicked();
+                return true;
+            case R.id.top_rated:
+                listPresenter.onTopRatedClicked();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    @Override
+    public void showData(List<Movie> movies) {
         listAdapter.setAll(movies);
     }
 
@@ -88,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements ListPresenter.Vie
     }
 
     @Override
-    public void gotoDetailsPage(PopularMovie popularMovie) {
+    public void gotoDetailsPage(Movie popularMovie) {
         DetailsActivity.startActivity(this, popularMovie);
     }
 }

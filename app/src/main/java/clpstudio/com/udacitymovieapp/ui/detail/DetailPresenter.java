@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.config.mvp.BaseMvpPresenter;
-import clpstudio.com.udacitymovieapp.data.model.PopularMovie;
+import clpstudio.com.udacitymovieapp.data.model.Movie;
 import clpstudio.com.udacitymovieapp.data.utils.UrlConstants;
 
 /**
@@ -22,7 +22,7 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
     public DetailPresenter() {
     }
 
-    public void onDataLoaded(PopularMovie popularMovie) {
+    public void onDataLoaded(Movie popularMovie) {
         view().showTitle(popularMovie.getOriginalTitle());
         view().showReleaseDate(popularMovie.getReleaseDate());
         view().showDescription(popularMovie.getOverview());
@@ -30,7 +30,7 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
         showImage(popularMovie);
     }
 
-    private void showImage(PopularMovie popularMovie){
+    private void showImage(Movie popularMovie){
         String apiKey = resources.getString(R.string.api_key);
         String url = UrlConstants.BASE_IMAGE_URL + popularMovie.getPosterPath() + UrlConstants.QUERY_APY_KEY + apiKey;
         view().showPoster(url);

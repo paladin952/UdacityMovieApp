@@ -11,6 +11,6 @@ public interface ApiService {
     Single<PopularMovieModel> getPopularMovies(@Query("api_key")String apiKey);
 
     @GET("movie/top_rated")
-    Single<String> getTopRatedMovies(@Query("api_key")String apiKey);
+    Single<PopularMovieModel> getTopRatedMovies(@Query("api_key")String apiKey);
 
 }

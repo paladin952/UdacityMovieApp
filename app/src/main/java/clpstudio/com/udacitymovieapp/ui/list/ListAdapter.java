@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.config.glide.GlideRequestOptionUtils;
-import clpstudio.com.udacitymovieapp.data.model.PopularMovie;
+import clpstudio.com.udacitymovieapp.data.model.Movie;
 import clpstudio.com.udacitymovieapp.data.utils.UrlConstants;
 
 import static clpstudio.com.udacitymovieapp.data.utils.UrlConstants.QUERY_APY_KEY;
@@ -26,7 +26,7 @@ import static clpstudio.com.udacitymovieapp.data.utils.UrlConstants.QUERY_APY_KE
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
-    private List<PopularMovie> data = new ArrayList<>();
+    private List<Movie> data = new ArrayList<>();
     private ViewHolder.OnClickMovieListener onClickMovieListener;
 
     public ListAdapter(ViewHolder.OnClickMovieListener onClickMovieListener) {
@@ -49,7 +49,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return data.size();
     }
 
-    public void setAll(List<PopularMovie> movies) {
+    public void setAll(List<Movie> movies) {
         data.clear();
         data.addAll(movies);
         notifyDataSetChanged();
@@ -60,10 +60,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         @BindView(R.id.image)
         ImageView image;
 
-        private PopularMovie popularMovie;
+        private Movie popularMovie;
 
         public interface OnClickMovieListener {
-            void onClickMovie(PopularMovie popularMovie);
+            void onClickMovie(Movie popularMovie);
         }
 
         ViewHolder(View itemView, OnClickMovieListener onClickMovieListener) {
@@ -75,7 +75,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             }
         }
 
-        void bind(PopularMovie movie) {
+        void bind(Movie movie) {
             this.popularMovie = movie;
             String apiKey = itemView.getContext().getString(R.string.api_key);
             String url = UrlConstants.BASE_IMAGE_URL + movie.getPosterPath() + QUERY_APY_KEY + apiKey;
