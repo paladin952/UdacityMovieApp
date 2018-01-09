@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import clpstudio.com.udacitymovieapp.MovieApplication;
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.data.model.PopularMovie;
-import clpstudio.com.udacitymovieapp.ui.detail.DetailActivity;
+import clpstudio.com.udacitymovieapp.ui.detail.DetailsActivity;
 import clpstudio.com.udacitymovieapp.ui.list.ListAdapter;
 import clpstudio.com.udacitymovieapp.ui.list.ListPresenter;
 
@@ -89,6 +89,6 @@ public class MainActivity extends AppCompatActivity implements ListPresenter.Vie
 
     @Override
     public void gotoDetailsPage(PopularMovie popularMovie) {
-        DetailActivity.startActivity(this, popularMovie);
+        DetailsActivity.startActivity(this, popularMovie);
     }
 }

@@ -7,10 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.f2prateek.dart.InjectExtra;
 
+import javax.inject.Inject;
+
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.data.model.PopularMovie;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity implements DetailPresenter.View {
+
+    @Inject
+    DetailPresenter detailPresenter;
 
     @InjectExtra
     PopularMovie popularMovie;
@@ -27,5 +32,14 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        detailPresenter.bindView(this);
+        setTitle(getString(R.string.details_screen_title));
+    }
+
+    @Override
+    protected void onDestroy() {
+        detailPresenter.unbindView();
+        super.onDestroy();
     }
 }
