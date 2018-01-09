@@ -66,6 +66,6 @@ public class RetrofitModule {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(CustomRxJava2CallAdapterFactory.create(
                         RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io())))
-                .baseUrl(PROTOCOL + context.getString(R.string.backend_hostname));
+                .baseUrl(context.getString(R.string.backend_hostname));
     }
 }

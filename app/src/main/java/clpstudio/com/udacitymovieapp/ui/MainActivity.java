@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import clpstudio.com.udacitymovieapp.MovieApplication;
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.data.model.PopularMovie;
+import clpstudio.com.udacitymovieapp.ui.detail.DetailActivity;
 import clpstudio.com.udacitymovieapp.ui.list.ListAdapter;
 import clpstudio.com.udacitymovieapp.ui.list.ListPresenter;
 
@@ -43,9 +44,9 @@ public class MainActivity extends AppCompatActivity implements ListPresenter.Vie
         ((MovieApplication) getApplicationContext()).getDiComponent().inject(this);
         ButterKnife.bind(this);
 
-        listAdapter = new ListAdapter();
+        listAdapter = new ListAdapter(popularMovie -> listPresenter.onMovieClicked(popularMovie));
         recyclerView.setAdapter(listAdapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false));
 
         listPresenter.bindView(this);
     }
@@ -84,5 +85,10 @@ public class MainActivity extends AppCompatActivity implements ListPresenter.Vie
     @Override
     public void hideEmptyText() {
         emptyText.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void gotoDetailsPage(PopularMovie popularMovie) {
+        DetailActivity.startActivity(this, popularMovie);
     }
 }

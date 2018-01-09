@@ -46,6 +46,10 @@ public class ListPresenter extends BaseMvpPresenter<ListPresenter.View> {
                 });
     }
 
+    public void onMovieClicked(PopularMovie popularMovie) {
+        view().gotoDetailsPage(popularMovie);
+    }
+
     public interface View extends BaseMvpPresenter.View {
         void showData(List<PopularMovie> movies);
 
@@ -58,6 +62,8 @@ public class ListPresenter extends BaseMvpPresenter<ListPresenter.View> {
         void showEmptyText();
 
         void hideEmptyText();
+
+        void gotoDetailsPage(PopularMovie popularMovie);
     }
 
 }
