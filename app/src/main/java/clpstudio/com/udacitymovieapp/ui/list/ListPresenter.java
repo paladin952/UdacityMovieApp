@@ -2,7 +2,6 @@ package clpstudio.com.udacitymovieapp.ui.list;
 
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import java.util.List;
 
@@ -31,13 +30,19 @@ public class ListPresenter extends BaseMvpPresenter<ListPresenter.View> {
     @Override
     public void bindView(@NonNull View view) {
         super.bindView(view);
+        view().showProgressBar();
+        view().hideEmptyText();
         movieRepository.getPopularMovies()
                 .subscribe(res -> {
-                    Log.d("luci", res.toString());
                     view().showData(res.getResults());
+                    view().hideProgressBar();
+
+                    if (res.getResults() == null || res.getResults().isEmpty()) {
+                        view().showEmptyText();
+                    }
                 }, throwable -> {
-                    Log.d("luci", throwable.getLocalizedMessage());
                     view().showError(resources.getString(R.string.error_something_went_wrong));
+                    view().hideProgressBar();
                 });
     }
 
@@ -45,6 +50,14 @@ public class ListPresenter extends BaseMvpPresenter<ListPresenter.View> {
         void showData(List<PopularMovie> movies);
 
         void showError(String error);
+
+        void showProgressBar();
+
+        void hideProgressBar();
+
+        void showEmptyText();
+
+        void hideEmptyText();
     }
 
 }

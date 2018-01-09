@@ -34,6 +34,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return data.size();
     }
 
+    public void setAll(List<PopularMovie> movies) {
+        data.clear();
+        data.addAll(movies);
+        notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public ViewHolder(View itemView) {
@@ -41,7 +47,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             ButterKnife.bind(this, itemView);
         }
 
-        public void bind(PopularMovie moview) {
+        public void bind(PopularMovie movie) {
 
         }
     }
