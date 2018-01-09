@@ -18,13 +18,14 @@ import clpstudio.com.udacitymovieapp.config.glide.GlideRequestOptionUtils;
 import clpstudio.com.udacitymovieapp.data.model.PopularMovie;
 import clpstudio.com.udacitymovieapp.data.utils.UrlConstants;
 
+import static clpstudio.com.udacitymovieapp.data.utils.UrlConstants.QUERY_APY_KEY;
+
 /**
  * Created by clapalucian on 09/01/2018.
  */
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
-    private static final String QUERY_APY_KEY = "?api_key=";
     private List<PopularMovie> data = new ArrayList<>();
     private ViewHolder.OnClickMovieListener onClickMovieListener;
 

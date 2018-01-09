@@ -11,9 +11,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import retrofit2.Call;
 import retrofit2.CallAdapter;
 
+/**
+ * Adapter that always return retrofit api calls on main thread
+ */
 public class CustomRxJava2CallAdapter  implements CallAdapter<Object, Object> {
-    private static final String TAG = "RxErrors";
-
     private final CallAdapter<Object, ?> delegate;
 
     public CustomRxJava2CallAdapter(CallAdapter<Object, ?> delegate) {

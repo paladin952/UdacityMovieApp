@@ -4,4 +4,5 @@
     <string name="error_something_went_wrong">Something went wrong. Please try again!</string>
     <string name="empty_data">There are no movies yet!</string>
     <string name="details_screen_title">Movie details</string>
+    <string name="details_rating">%1$s/10</string>
 </resources>
