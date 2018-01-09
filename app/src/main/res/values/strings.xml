@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">UdacityMovieApp</string>
-    <string name="backend_hostname"/>
+    <string name="backend_hostname">api.themoviedb.org/3/</string>
+    <string name="error_something_went_wrong">Something went wrong. Please try again!</string>
 </resources>

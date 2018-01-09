@@ -25,4 +25,8 @@ public class MovieApplication extends Application {
         super.attachBaseContext(base);
         MultiDex.install(base);
     }
+
+    public DIComponent getDiComponent() {
+        return diComponent;
+    }
 }

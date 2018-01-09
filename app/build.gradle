@@ -24,6 +24,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            def api_key = "$System.env.MOVIE_DEBUG_API_KEY"
+            assert api_key != "null", "Please define MOVIE_DEBUG_API_KEY environmental variable for development builds"
+            resValue "string", "api_key", api_key
+
+            debuggable true
+        }
     }
 
     dexOptions {
