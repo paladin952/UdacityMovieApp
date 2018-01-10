@@ -79,9 +79,8 @@ public abstract class BaseMvpPresenter<V extends BaseMvpPresenter.View> {
     private Class<?> getViewInterfaceClass() {
         Class<?> interfaceClass = null;
         Class<?>[] interfaces = this.view.getClass().getInterfaces();
-        for (int i = 0; i < interfaces.length; i++) {
-            Class<?> interfaceCandidate = interfaces[i];
-            if (BaseMvpPresenter.View.class.isAssignableFrom(interfaceCandidate)) {
+        for (Class<?> interfaceCandidate : interfaces) {
+            if (View.class.isAssignableFrom(interfaceCandidate)) {
                 interfaceClass = interfaceCandidate;
             }
         }

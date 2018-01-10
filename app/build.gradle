@@ -56,8 +56,8 @@ android {
 
 dependencies {
     def supportLibraryVersion = '26.1.0'
-    def daggerVersion = '2.11';
-    def retrofitVersion = '2.3.0';
+    def daggerVersion = '2.11'
+    def retrofitVersion = '2.3.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {

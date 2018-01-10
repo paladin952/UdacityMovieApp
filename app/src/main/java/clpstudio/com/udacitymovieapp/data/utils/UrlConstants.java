@@ -1,9 +1,5 @@
 package clpstudio.com.udacitymovieapp.data.utils;
 
-/**
- * Created by clapalucian on 09/01/2018.
- */
-
 public class UrlConstants {
 
     public static final String QUERY_APY_KEY = "?api_key=";

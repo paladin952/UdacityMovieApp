@@ -20,10 +20,6 @@ import clpstudio.com.udacitymovieapp.data.utils.UrlConstants;
 
 import static clpstudio.com.udacitymovieapp.data.utils.UrlConstants.QUERY_APY_KEY;
 
-/**
- * Created by clapalucian on 09/01/2018.
- */
-
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     private List<Movie> data = new ArrayList<>();

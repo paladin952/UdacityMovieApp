@@ -9,10 +9,6 @@ import clpstudio.com.udacitymovieapp.config.mvp.BaseMvpPresenter;
 import clpstudio.com.udacitymovieapp.data.model.Movie;
 import clpstudio.com.udacitymovieapp.data.utils.UrlConstants;
 
-/**
- * Created by clapalucian on 09/01/2018.
- */
-
 public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
 
     @Inject

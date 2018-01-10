@@ -5,10 +5,6 @@ import com.bumptech.glide.request.RequestOptions;
 
 import clpstudio.com.udacitymovieapp.R;
 
-/**
- * Created by clapalucian on 09/01/2018.
- */
-
 public class GlideRequestOptionUtils {
 
     /**

@@ -15,10 +15,6 @@ import clpstudio.com.udacitymovieapp.data.model.Movie;
 import clpstudio.com.udacitymovieapp.data.model.PopularMovieModel;
 import io.reactivex.Single;
 
-/**
- * Created by clapalucian on 09/01/2018.
- */
-
 public class ListPresenter extends BaseMvpPresenter<ListPresenter.View> {
 
     @Inject

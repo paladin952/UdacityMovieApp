@@ -10,10 +10,6 @@ import clpstudio.com.udacitymovieapp.MovieApplication;
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by clapalucian on 08/01/2018.
- */
-
 @Module
 public class ApplicationModule {
 
