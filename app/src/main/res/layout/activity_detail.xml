@@ -31,6 +31,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:contentDescription="Poster"
                 android:id="@+id/poster"
                 android:layout_width="140dp"
                 android:layout_height="175dp"
