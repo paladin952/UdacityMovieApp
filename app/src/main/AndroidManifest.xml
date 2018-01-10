@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="clpstudio.com.udacitymovieapp.config.glide.GlideConfiguration"
-            android:value="GlideModule"/>
+            android:value="AppGlideModule"/>
 
         <activity android:name=".ui.MainActivity">
             <intent-filter>
