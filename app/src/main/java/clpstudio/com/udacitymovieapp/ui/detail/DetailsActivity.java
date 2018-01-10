@@ -13,6 +13,7 @@ import com.f2prateek.dart.InjectExtra;
 
 import javax.inject.Inject;
 
+import clpstudio.com.udacitymovieapp.Henson;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import clpstudio.com.udacitymovieapp.MovieApplication;

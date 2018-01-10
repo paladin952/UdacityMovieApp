@@ -61,8 +61,6 @@ public abstract class BaseMvpPresenter<V extends BaseMvpPresenter.View> {
 
     /**
      * Create a fake proxy of V that does nothing
-     *
-     * @return a proxy of V
      */
     private V getFakeViewProxy() {
         final Class<?> viewClass = getViewInterfaceClass();
