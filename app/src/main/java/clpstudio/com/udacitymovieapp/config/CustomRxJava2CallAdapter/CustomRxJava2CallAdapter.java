@@ -1,5 +1,7 @@
 package clpstudio.com.udacitymovieapp.config.CustomRxJava2CallAdapter;
 
+import android.support.annotation.NonNull;
+
 import java.lang.reflect.Type;
 
 import io.reactivex.Completable;
@@ -27,7 +29,7 @@ public class CustomRxJava2CallAdapter  implements CallAdapter<Object, Object> {
     }
 
     @Override
-    public Object adapt(Call<Object> call) {
+    public Object adapt(@NonNull Call<Object> call) {
         Object result = delegate.adapt(call);
         if (result instanceof Completable) {
             return ((Completable) result)

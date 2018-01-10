@@ -1,5 +1,7 @@
 package clpstudio.com.udacitymovieapp.config.CustomRxJava2CallAdapter;
 
+import android.support.annotation.NonNull;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
@@ -23,7 +25,7 @@ public class CustomRxJava2CallAdapterFactory extends CallAdapter.Factory {
     }
 
     @Override
-    public CallAdapter<?, ?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
+    public CallAdapter<?, ?> get(Type returnType, @NonNull Annotation[] annotations, @NonNull Retrofit retrofit) {
         Class<?> rawType = getRawType(returnType);
         if (rawType != Completable.class && rawType != Flowable.class && rawType != Single.class
                 && rawType != Maybe.class && rawType != Observable.class) {
