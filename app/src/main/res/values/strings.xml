@@ -8,4 +8,5 @@
     <string name="sort_most_popular">Most popular</string>
     <string name="sort_top_rated">Top rated</string>
     <string name="error_no_internet">You don\'t have internet connection!</string>
+    <string name="error_problem_getting_data">We had a problem downloading trailers and reviews. Please try again!</string>
 </resources>

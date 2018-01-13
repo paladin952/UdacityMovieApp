@@ -1,5 +1,5 @@
 
-package clpstudio.com.udacitymovieapp.data.model;
+package clpstudio.com.udacitymovieapp.data.model.movie;
 
 import com.google.gson.annotations.SerializedName;
 

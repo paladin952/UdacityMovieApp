@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import clpstudio.com.udacitymovieapp.MovieApplication;
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.config.glide.GlideRequestOptionUtils;
-import clpstudio.com.udacitymovieapp.data.model.Movie;
+import clpstudio.com.udacitymovieapp.data.model.movie.Movie;
 
 public class DetailsActivity extends AppCompatActivity implements DetailPresenter.View {
 
@@ -57,6 +57,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailPresente
         Dart.inject(this);
 
         detailPresenter.bindView(this);
+        detailPresenter.onCreate();
         detailPresenter.onDataLoaded(popularMovie);
         setTitle(getString(R.string.details_screen_title));
     }

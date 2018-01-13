@@ -2,15 +2,21 @@ package clpstudio.com.udacitymovieapp.ui.detail;
 
 import android.content.res.Resources;
 
+import java.net.UnknownHostException;
+
 import javax.inject.Inject;
 
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.config.mvp.BaseMvpPresenter;
-import clpstudio.com.udacitymovieapp.data.model.Movie;
+import clpstudio.com.udacitymovieapp.data.MovieRepository;
+import clpstudio.com.udacitymovieapp.data.model.movie.Movie;
+import clpstudio.com.udacitymovieapp.data.model.zip.ReviewTrailerModel;
 import clpstudio.com.udacitymovieapp.data.utils.UrlConstants;
 
 public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
 
+    @Inject
+    MovieRepository movieRepository;
     @Inject
     Resources resources;
 
@@ -19,6 +25,8 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
     }
 
     public void onDataLoaded(Movie popularMovie) {
+        getReviewsAndTrailers(popularMovie);
+
         view().showTitle(popularMovie.getOriginalTitle());
         view().showReleaseDate(popularMovie.getReleaseDate());
         view().showDescription(popularMovie.getOverview());
@@ -26,7 +34,23 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
         showImage(popularMovie);
     }
 
-    private void showImage(Movie popularMovie){
+    private void getReviewsAndTrailers(Movie popularMovie) {
+        view().showProgressTrailersAndReviews();
+        movieRepository.getReviews(popularMovie.getId())
+                .zipWith(movieRepository.getTrailers(popularMovie.getId()), ReviewTrailerModel::new)
+                .subscribe(reviewTrailerModel -> {
+                    view().hideProgressTrailersAndReviews();
+                }, throwable -> {
+                    if (throwable instanceof UnknownHostException) {
+                        view().showError(resources.getString(R.string.error_no_internet));
+                    } else {
+                        view().showError(resources.getString(R.string.error_problem_getting_data));
+                    }
+                    view().hideProgressTrailersAndReviews();
+                });
+    }
+
+    private void showImage(Movie popularMovie) {
         String apiKey = resources.getString(R.string.api_key);
         String url = UrlConstants.BASE_IMAGE_URL + popularMovie.getPosterPath() + UrlConstants.QUERY_APY_KEY + apiKey;
         view().showPoster(url);
@@ -43,6 +67,12 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
         void showDescription(String description);
 
         void showPoster(String url);
+
+        void showError(String text);
+
+        void showProgressTrailersAndReviews();
+
+        void hideProgressTrailersAndReviews();
     }
 
 }

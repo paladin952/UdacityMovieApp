@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.config.glide.GlideRequestOptionUtils;
-import clpstudio.com.udacitymovieapp.data.model.Movie;
+import clpstudio.com.udacitymovieapp.data.model.movie.Movie;
 import clpstudio.com.udacitymovieapp.data.utils.UrlConstants;
 
 import static clpstudio.com.udacitymovieapp.data.utils.UrlConstants.QUERY_APY_KEY;

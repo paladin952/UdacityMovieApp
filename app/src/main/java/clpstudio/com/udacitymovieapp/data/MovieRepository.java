@@ -6,7 +6,9 @@ import javax.inject.Inject;
 
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.bussines.ApiService;
-import clpstudio.com.udacitymovieapp.data.model.PopularMovieModel;
+import clpstudio.com.udacitymovieapp.data.model.movie.PopularMovieModel;
+import clpstudio.com.udacitymovieapp.data.model.review.ReviewResponseModel;
+import clpstudio.com.udacitymovieapp.data.model.trailer.TrailerModel;
 import io.reactivex.Single;
 
 public class MovieRepository {
@@ -26,5 +28,13 @@ public class MovieRepository {
 
     public Single<PopularMovieModel> getTopRatedMovies() {
         return apiService.getTopRatedMovies(resources.getString(R.string.api_key));
+    }
+
+    public Single<ReviewResponseModel> getReviews(int id) {
+        return apiService.getReviews(id, resources.getString(R.string.api_key));
+    }
+
+    public Single<TrailerModel> getTrailers(int id) {
+        return apiService.getTrailers(id, resources.getString(R.string.api_key));
     }
 }
