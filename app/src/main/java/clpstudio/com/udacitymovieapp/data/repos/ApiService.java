@@ -1,4 +1,4 @@
-package clpstudio.com.udacitymovieapp.bussines;
+package clpstudio.com.udacitymovieapp.data.repos;
 
 import clpstudio.com.udacitymovieapp.data.model.movie.PopularMovieModel;
 import clpstudio.com.udacitymovieapp.data.model.review.ReviewResponseModel;

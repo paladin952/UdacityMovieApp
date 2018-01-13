@@ -9,4 +9,9 @@
     <string name="sort_top_rated">Top rated</string>
     <string name="error_no_internet">You don\'t have internet connection!</string>
     <string name="error_problem_getting_data">We had a problem downloading trailers and reviews. Please try again!</string>
+    <string name="reviews_title">Reviews</string>
+    <string name="see_all_reviews">SEE ALL REVIEWS</string>
+    <string name="trailes_title">Trailers</string>
+    <string name="see_all_trailers">SEE ALL TRAILERS</string>
+    <string name="trailer_1">Trailer 1</string>
 </resources>

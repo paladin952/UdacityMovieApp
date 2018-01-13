@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.config.mvp.BaseMvpPresenter;
-import clpstudio.com.udacitymovieapp.data.MovieRepository;
+import clpstudio.com.udacitymovieapp.data.repos.MovieRepository;
 import clpstudio.com.udacitymovieapp.data.model.movie.Movie;
 import clpstudio.com.udacitymovieapp.data.model.zip.ReviewTrailerModel;
 import clpstudio.com.udacitymovieapp.data.utils.UrlConstants;
@@ -39,6 +39,8 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
         movieRepository.getReviews(popularMovie.getId())
                 .zipWith(movieRepository.getTrailers(popularMovie.getId()), ReviewTrailerModel::new)
                 .subscribe(reviewTrailerModel -> {
+
+
                     view().hideProgressTrailersAndReviews();
                 }, throwable -> {
                     if (throwable instanceof UnknownHostException) {
@@ -54,6 +56,14 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
         String apiKey = resources.getString(R.string.api_key);
         String url = UrlConstants.BASE_IMAGE_URL + popularMovie.getPosterPath() + UrlConstants.QUERY_APY_KEY + apiKey;
         view().showPoster(url);
+    }
+
+    public void onClickSeeAllReviews() {
+        view().gotoReviewsListActivity();
+    }
+
+    public void onClickSeeAllTrailer() {
+        view().gotoTrailersListActivity();
     }
 
     public interface View extends BaseMvpPresenter.View {
@@ -73,6 +83,10 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
         void showProgressTrailersAndReviews();
 
         void hideProgressTrailersAndReviews();
+
+        void gotoReviewsListActivity();
+
+        void gotoTrailersListActivity();
     }
 
 }

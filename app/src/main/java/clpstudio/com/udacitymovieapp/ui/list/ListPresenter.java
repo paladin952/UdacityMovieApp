@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.config.mvp.BaseMvpPresenter;
-import clpstudio.com.udacitymovieapp.data.MovieRepository;
+import clpstudio.com.udacitymovieapp.data.repos.MovieRepository;
 import clpstudio.com.udacitymovieapp.data.model.movie.Movie;
 import clpstudio.com.udacitymovieapp.data.model.movie.PopularMovieModel;
 import io.reactivex.Single;

@@ -8,11 +8,11 @@
     <application
         android:name=".MovieApplication"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:fullBackupContent="true"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="clpstudio.com.udacitymovieapp.config.glide.GlideConfiguration"
@@ -25,11 +25,21 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
-            android:parentActivityName=".ui.MainActivity"
+            android:name=".ui.detail.DetailsActivity"
             android:exported="false"
-            android:name=".ui.detail.DetailsActivity">
-        </activity>
+            android:parentActivityName=".ui.MainActivity"/>
+
+        <activity
+            android:name=".ui.reviews.ReviewsListActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.detail.DetailsActivity"/>
+
+        <activity
+            android:name=".ui.trailers.TrailersListActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.detail.DetailsActivity"/>
     </application>
 
 </manifest>

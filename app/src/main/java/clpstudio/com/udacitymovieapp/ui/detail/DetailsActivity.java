@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,13 +14,16 @@ import com.f2prateek.dart.InjectExtra;
 
 import javax.inject.Inject;
 
-import clpstudio.com.udacitymovieapp.Henson;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import clpstudio.com.udacitymovieapp.Henson;
 import clpstudio.com.udacitymovieapp.MovieApplication;
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.config.glide.GlideRequestOptionUtils;
 import clpstudio.com.udacitymovieapp.data.model.movie.Movie;
+import clpstudio.com.udacitymovieapp.ui.reviews.ReviewsListActivity;
+import clpstudio.com.udacitymovieapp.ui.trailers.TrailersListActivity;
 
 public class DetailsActivity extends AppCompatActivity implements DetailPresenter.View {
 
@@ -33,6 +37,10 @@ public class DetailsActivity extends AppCompatActivity implements DetailPresente
     TextView descriptionView;
     @BindView(R.id.poster)
     ImageView posterImage;
+    @BindView(R.id.review_title)
+    TextView review1Title;
+    @BindView(R.id.review_message)
+    TextView review1Message;
 
     @Inject
     DetailPresenter detailPresenter;
@@ -48,6 +56,16 @@ public class DetailsActivity extends AppCompatActivity implements DetailPresente
         activity.startActivity(intent);
     }
 
+    @OnClick(R.id.see_all_review_button)
+    public void onClickSeeAllReviews() {
+        detailPresenter.onClickSeeAllReviews();
+    }
+
+    @OnClick(R.id.see_all_trailers)
+    public void onClickSeeAllTrailers() {
+        detailPresenter.onClickSeeAllTrailer();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +78,18 @@ public class DetailsActivity extends AppCompatActivity implements DetailPresente
         detailPresenter.onCreate();
         detailPresenter.onDataLoaded(popularMovie);
         setTitle(getString(R.string.details_screen_title));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -94,5 +124,30 @@ public class DetailsActivity extends AppCompatActivity implements DetailPresente
                 .load(url)
                 .apply(GlideRequestOptionUtils.getStandard())
                 .into(posterImage);
+    }
+
+    @Override
+    public void showError(String text) {
+
+    }
+
+    @Override
+    public void showProgressTrailersAndReviews() {
+
+    }
+
+    @Override
+    public void hideProgressTrailersAndReviews() {
+
+    }
+
+    @Override
+    public void gotoReviewsListActivity() {
+        ReviewsListActivity.startActivity(this);
+    }
+
+    @Override
+    public void gotoTrailersListActivity() {
+        TrailersListActivity.startActivity(this);
     }
 }

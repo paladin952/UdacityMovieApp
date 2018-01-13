@@ -1,11 +1,10 @@
-package clpstudio.com.udacitymovieapp.data;
+package clpstudio.com.udacitymovieapp.data.repos;
 
 import android.content.res.Resources;
 
 import javax.inject.Inject;
 
 import clpstudio.com.udacitymovieapp.R;
-import clpstudio.com.udacitymovieapp.bussines.ApiService;
 import clpstudio.com.udacitymovieapp.data.model.movie.PopularMovieModel;
 import clpstudio.com.udacitymovieapp.data.model.review.ReviewResponseModel;
 import clpstudio.com.udacitymovieapp.data.model.trailer.TrailerModel;

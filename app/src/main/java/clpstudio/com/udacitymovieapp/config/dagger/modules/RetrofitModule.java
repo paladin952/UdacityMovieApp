@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Singleton;
 
 import clpstudio.com.udacitymovieapp.R;
-import clpstudio.com.udacitymovieapp.bussines.ApiService;
+import clpstudio.com.udacitymovieapp.data.repos.ApiService;
 import clpstudio.com.udacitymovieapp.config.CustomRxJava2CallAdapter.CustomRxJava2CallAdapterFactory;
 import dagger.Module;
 import dagger.Provides;
