@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.data.model.movie.PopularMovieModel;
 import clpstudio.com.udacitymovieapp.data.model.review.ReviewResponseModel;
-import clpstudio.com.udacitymovieapp.data.model.trailer.TrailerModel;
+import clpstudio.com.udacitymovieapp.data.model.trailer.TrailerResponseModel;
 import io.reactivex.Single;
 
 public class MovieRepository {
@@ -33,7 +33,7 @@ public class MovieRepository {
         return apiService.getReviews(id, resources.getString(R.string.api_key));
     }
 
-    public Single<TrailerModel> getTrailers(int id) {
+    public Single<TrailerResponseModel> getTrailers(int id) {
         return apiService.getTrailers(id, resources.getString(R.string.api_key));
     }
 }

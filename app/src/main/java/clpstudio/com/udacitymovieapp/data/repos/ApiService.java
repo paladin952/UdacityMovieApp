@@ -2,7 +2,7 @@ package clpstudio.com.udacitymovieapp.data.repos;
 
 import clpstudio.com.udacitymovieapp.data.model.movie.PopularMovieModel;
 import clpstudio.com.udacitymovieapp.data.model.review.ReviewResponseModel;
-import clpstudio.com.udacitymovieapp.data.model.trailer.TrailerModel;
+import clpstudio.com.udacitymovieapp.data.model.trailer.TrailerResponseModel;
 import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -17,7 +17,7 @@ public interface ApiService {
     Single<PopularMovieModel> getTopRatedMovies(@Query("api_key") String apiKey);
 
     @GET("movie/{id}/videos")
-    Single<TrailerModel> getTrailers(@Path("id") int id, @Query("api_key") String apiKey);
+    Single<TrailerResponseModel> getTrailers(@Path("id") int id, @Query("api_key") String apiKey);
 
     @GET("movie/{id}/reviews")
     Single<ReviewResponseModel> getReviews(@Path("id") int id, @Query("api_key") String apiKey);

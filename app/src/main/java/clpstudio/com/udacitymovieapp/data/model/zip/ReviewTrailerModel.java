@@ -1,14 +1,14 @@
 package clpstudio.com.udacitymovieapp.data.model.zip;
 
 import clpstudio.com.udacitymovieapp.data.model.review.ReviewResponseModel;
-import clpstudio.com.udacitymovieapp.data.model.trailer.TrailerModel;
+import clpstudio.com.udacitymovieapp.data.model.trailer.TrailerResponseModel;
 
 public class ReviewTrailerModel {
 
     private ReviewResponseModel review;
-    private TrailerModel trailer;
+    private TrailerResponseModel trailer;
 
-    public ReviewTrailerModel(ReviewResponseModel review, TrailerModel trailer) {
+    public ReviewTrailerModel(ReviewResponseModel review, TrailerResponseModel trailer) {
         this.review = review;
         this.trailer = trailer;
     }
@@ -17,7 +17,7 @@ public class ReviewTrailerModel {
         return review;
     }
 
-    public TrailerModel getTrailer() {
+    public TrailerResponseModel getTrailer() {
         return trailer;
     }
 }
