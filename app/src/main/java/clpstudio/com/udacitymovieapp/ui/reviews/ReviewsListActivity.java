@@ -93,6 +93,7 @@ public class ReviewsListActivity extends AppCompatActivity implements ReviewsLis
 
     @Override
     public void showError(String message) {
+        errorText.setVisibility(View.VISIBLE);
         errorText.setText(message);
     }
 
