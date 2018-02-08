@@ -57,6 +57,7 @@ public class ReviewsListAdapter extends RecyclerView.Adapter<ReviewsListAdapter.
             title.setText(model.getAuthor());
             message.setText(model.getContent());
         }
+
     }
 
 }

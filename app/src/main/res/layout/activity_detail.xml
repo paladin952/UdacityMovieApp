@@ -128,8 +128,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:autoLink="web"
                 android:layout_marginRight="16dp"
+                android:autoLink="web"
                 tools:text="The most beautiful movie ever. I recommend it for everyone and all ages."/>
 
             <Button
@@ -173,20 +173,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp">
 
-                    <ImageButton
-                        android:id="@+id/trailer_1_play_button"
+                    <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:background="@android:color/transparent"
+                        android:clickable="false"
                         android:src="@android:drawable/ic_media_play"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:clickable="false"
                         android:text="@string/trailer_1"
                         android:textSize="20sp"/>
                 </LinearLayout>

@@ -24,6 +24,7 @@ import clpstudio.com.udacitymovieapp.MovieApplication;
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.data.model.movie.Movie;
 import clpstudio.com.udacitymovieapp.data.model.trailer.TrailerModel;
+import clpstudio.com.udacitymovieapp.data.utils.NavigationHelper;
 
 public class TrailersListActivity extends AppCompatActivity implements TrailersListPresenter.View {
 
@@ -55,7 +56,9 @@ public class TrailersListActivity extends AppCompatActivity implements TrailersL
         ((MovieApplication)getApplicationContext()).getDiComponent().inject(this);
         ButterKnife.bind(this);
         Dart.inject(this);
-        adapter = new TrailersListAdapter();
+
+        adapter = new TrailersListAdapter(trailer -> NavigationHelper.openYoutubeApp(this, trailer.getKey()));
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 

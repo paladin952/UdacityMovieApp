@@ -23,7 +23,7 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
     @Inject
     Resources resources;
 
-    private String trailer1Id;
+    private String trailer1Key;
 
     @Inject
     public DetailPresenter() {
@@ -63,7 +63,7 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
                     if (trailers != null && !trailers.isEmpty()) {
                         view().showReviewsTrailersSections();
                         view().showTrailersContainer();
-                        trailer1Id = trailers.get(0).getId();
+                        trailer1Key = trailers.get(0).getKey();
 
                         if (trailers.size() <= 1) {
                             view().hideSeeAllTrailersButton();
@@ -99,7 +99,7 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
     }
 
     public void onClickTrailer1() {
-        //TODO
+        view().openYoutubeApp(trailer1Key);
     }
 
     public interface View extends BaseMvpPresenter.View {
@@ -135,6 +135,8 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
         void hideSeeAllTrailersButton();
 
         void hideSeeAllReviewsButton();
+
+        void openYoutubeApp(String key);
     }
 
 }

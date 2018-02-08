@@ -26,6 +26,7 @@ import clpstudio.com.udacitymovieapp.MovieApplication;
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.config.glide.GlideRequestOptionUtils;
 import clpstudio.com.udacitymovieapp.data.model.movie.Movie;
+import clpstudio.com.udacitymovieapp.data.utils.NavigationHelper;
 import clpstudio.com.udacitymovieapp.ui.reviews.ReviewsListActivity;
 import clpstudio.com.udacitymovieapp.ui.trailers.TrailersListActivity;
 
@@ -83,7 +84,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailPresente
         detailPresenter.onClickSeeAllTrailer(popularMovie);
     }
 
-    @OnClick(R.id.trailer_1_play_button)
+    @OnClick(R.id.trailer_1)
     public void onClickTrailer1() {
         detailPresenter.onClickTrailer1();
     }
@@ -123,6 +124,11 @@ public class DetailsActivity extends AppCompatActivity implements DetailPresente
     @Override
     public void showTitle(String title) {
         titleView.setText(title);
+    }
+
+    @Override
+    public void openYoutubeApp(String key) {
+        NavigationHelper.openYoutubeApp(this, key);
     }
 
     @Override
