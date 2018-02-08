@@ -55,15 +55,22 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
                         if (reviews.size() <= 1) {
                             view().hideSeeAllReviewsButton();
                         }
+                    } else {
+                        view().hideSeeAllReviewsButton();
+                        view().showReviewTitle(resources.getString(R.string.no_reviews));
                     }
 
                     if (trailers != null && !trailers.isEmpty()) {
+                        view().showReviewsTrailersSections();
                         view().showTrailersContainer();
                         trailer1Id = trailers.get(0).getId();
 
                         if (trailers.size() <= 1) {
                             view().hideSeeAllTrailersButton();
                         }
+                    } else {
+                        view().hideSeeAllTrailersButton();
+                        //TODO
                     }
 
                     view().hideProgressTrailersAndReviews();
@@ -83,12 +90,12 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
         view().showPoster(url);
     }
 
-    public void onClickSeeAllReviews() {
-        view().gotoReviewsListActivity();
+    public void onClickSeeAllReviews(Movie movie) {
+        view().gotoReviewsListActivity(movie);
     }
 
-    public void onClickSeeAllTrailer() {
-        view().gotoTrailersListActivity();
+    public void onClickSeeAllTrailer(Movie movie) {
+        view().gotoTrailersListActivity(movie);
     }
 
     public void onClickTrailer1() {
@@ -113,9 +120,9 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
 
         void hideProgressTrailersAndReviews();
 
-        void gotoReviewsListActivity();
+        void gotoReviewsListActivity(Movie movie);
 
-        void gotoTrailersListActivity();
+        void gotoTrailersListActivity(Movie movie);
 
         void showReviewsTrailersSections();
 

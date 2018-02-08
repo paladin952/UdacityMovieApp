@@ -5,26 +5,49 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
-import com.f2prateek.dart.HensonNavigable;
+import com.f2prateek.dart.Dart;
+import com.f2prateek.dart.InjectExtra;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import clpstudio.com.udacitymovieapp.Henson;
 import clpstudio.com.udacitymovieapp.MovieApplication;
 import clpstudio.com.udacitymovieapp.R;
+import clpstudio.com.udacitymovieapp.data.model.movie.Movie;
+import clpstudio.com.udacitymovieapp.data.model.review.ReviewModel;
 
-@HensonNavigable
 public class ReviewsListActivity extends AppCompatActivity implements ReviewsListPresenter.View {
+
+
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.progressBar)
+    View progressBar;
+    @BindView(R.id.error_text)
+    TextView errorText;
 
     @Inject
     ReviewsListPresenter presenter;
 
-    public static void startActivity(Activity activity) {
+    @InjectExtra
+    Movie movie;
+
+    private ReviewsListAdapter adapter;
+
+    public static void startActivity(Activity activity, Movie movie) {
         Intent intent = Henson.with(activity)
                 .gotoReviewsListActivity()
+                .movie(movie)
                 .build();
         activity.startActivity(intent);
     }
@@ -36,8 +59,13 @@ public class ReviewsListActivity extends AppCompatActivity implements ReviewsLis
 
         ((MovieApplication) getApplicationContext()).getDiComponent().inject(this);
         ButterKnife.bind(this);
+        Dart.inject(this);
+        adapter = new ReviewsListAdapter();
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         presenter.bindView(this);
+        presenter.onDataLoaded(movie);
     }
 
     @Override
@@ -56,5 +84,25 @@ public class ReviewsListActivity extends AppCompatActivity implements ReviewsLis
     protected void onDestroy() {
         presenter.unbindView();
         super.onDestroy();
+    }
+
+    @Override
+    public void showReviews(List<ReviewModel> data) {
+        adapter.setAll(data);
+    }
+
+    @Override
+    public void showError(String message) {
+        errorText.setText(message);
+    }
+
+    @Override
+    public void showLoadingIndicator() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoadingIndicator() {
+        progressBar.setVisibility(View.GONE);
     }
 }

@@ -5,26 +5,44 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 
-import com.f2prateek.dart.HensonNavigable;
+import com.f2prateek.dart.Dart;
+import com.f2prateek.dart.InjectExtra;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import clpstudio.com.udacitymovieapp.Henson;
 import clpstudio.com.udacitymovieapp.MovieApplication;
 import clpstudio.com.udacitymovieapp.R;
+import clpstudio.com.udacitymovieapp.data.model.movie.Movie;
+import clpstudio.com.udacitymovieapp.data.model.trailer.TrailerModel;
 
-@HensonNavigable
 public class TrailersListActivity extends AppCompatActivity implements TrailersListPresenter.View {
+
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.progressBar)
+    View progressBar;
 
     @Inject
     TrailersListPresenter presenter;
 
-    public static void startActivity(Activity activity) {
+    @InjectExtra
+    Movie movie;
+    private TrailersListAdapter adapter;
+
+    public static void startActivity(Activity activity, Movie movie) {
         Intent intent = Henson.with(activity)
                 .gotoTrailersListActivity()
+                .movie(movie)
                 .build();
         activity.startActivity(intent);
     }
@@ -36,8 +54,13 @@ public class TrailersListActivity extends AppCompatActivity implements TrailersL
 
         ((MovieApplication)getApplicationContext()).getDiComponent().inject(this);
         ButterKnife.bind(this);
+        Dart.inject(this);
+        adapter = new TrailersListAdapter();
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         presenter.bindView(this);
+        presenter.onDataLoaded(movie);
     }
 
     @Override
@@ -56,5 +79,25 @@ public class TrailersListActivity extends AppCompatActivity implements TrailersL
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void showTrailers(List<TrailerModel> data) {
+        adapter.setAll(data);
+    }
+
+    @Override
+    public void showEmptyData() {
+
+    }
+
+    @Override
+    public void showLoadingIndicator() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoadingIndicator() {
+        progressBar.setVisibility(View.GONE);
     }
 }

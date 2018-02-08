@@ -75,12 +75,12 @@ public class DetailsActivity extends AppCompatActivity implements DetailPresente
 
     @OnClick(R.id.see_all_review_button)
     public void onClickSeeAllReviews() {
-        detailPresenter.onClickSeeAllReviews();
+        detailPresenter.onClickSeeAllReviews(popularMovie);
     }
 
     @OnClick(R.id.see_all_trailers)
     public void onClickSeeAllTrailers() {
-        detailPresenter.onClickSeeAllTrailer();
+        detailPresenter.onClickSeeAllTrailer(popularMovie);
     }
 
     @OnClick(R.id.trailer_1_play_button)
@@ -164,13 +164,13 @@ public class DetailsActivity extends AppCompatActivity implements DetailPresente
     }
 
     @Override
-    public void gotoReviewsListActivity() {
-        ReviewsListActivity.startActivity(this);
+    public void gotoReviewsListActivity(Movie movie) {
+        ReviewsListActivity.startActivity(this, movie);
     }
 
     @Override
-    public void gotoTrailersListActivity() {
-        TrailersListActivity.startActivity(this);
+    public void gotoTrailersListActivity(Movie movie) {
+        TrailersListActivity.startActivity(this, movie);
     }
 
     @Override
