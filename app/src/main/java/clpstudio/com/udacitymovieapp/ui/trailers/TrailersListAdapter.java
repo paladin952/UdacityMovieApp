@@ -4,10 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import clpstudio.com.udacitymovieapp.R;
 import clpstudio.com.udacitymovieapp.data.model.trailer.TrailerModel;
@@ -25,7 +27,7 @@ public class TrailersListAdapter extends RecyclerView.Adapter<TrailersListAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(data.get(position));
+        holder.bind(data.get(position), position);
     }
 
     @Override
@@ -40,13 +42,17 @@ public class TrailersListAdapter extends RecyclerView.Adapter<TrailersListAdapte
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.title)
+        TextView title;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        public void bind(TrailerModel model) {
-
+        public void bind(TrailerModel model, int position) {
+            title.setText(itemView.getContext().getString(R.string.trailer_x, position + 1));
         }
     }
 }

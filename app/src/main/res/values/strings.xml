@@ -17,4 +17,5 @@
     <string name="see_all_trailers">SEE ALL TRAILERS</string>
     <string name="trailer_1">Trailer 1</string>
     <string name="no_reviews">There are no reviews for this movie.</string>
+    <string name="trailer_x">Trailer %1$d</string>
 </resources>
