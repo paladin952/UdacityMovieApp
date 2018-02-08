@@ -70,7 +70,6 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
                         }
                     } else {
                         view().hideSeeAllTrailersButton();
-                        //TODO
                     }
 
                     view().hideProgressTrailersAndReviews();

@@ -3,16 +3,15 @@
               android:id="@+id/trailer_1"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_marginTop="8dp"
               android:background="?android:attr/selectableItemBackground"
-              android:paddingLeft="16dp"
-              android:paddingRight="16dp">
+              android:padding="16dp">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/trailer_1_play_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
         android:src="@android:drawable/ic_media_play"/>
 
     <TextView
