@@ -30,6 +30,7 @@ public class DetailPresenter extends BaseMvpPresenter<DetailPresenter.View> {
     }
 
     public void onDataLoaded(Movie popularMovie) {
+        movieRepository.saveMovie(popularMovie);
         getReviewsAndTrailers(popularMovie);
 
         view().showTitle(popularMovie.getOriginalTitle());

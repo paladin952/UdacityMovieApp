@@ -1,11 +1,15 @@
 
 package clpstudio.com.udacitymovieapp.data.model.movie;
 
+import android.content.ContentValues;
+
 import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
 
 import java.util.List;
+
+import clpstudio.com.udacitymovieapp.data.database.DbContract;
 
 @Parcel
 public class Movie {
@@ -43,8 +47,8 @@ public class Movie {
     Boolean adult;
 
     String overview;
-    @SerializedName("release_date")
 
+    @SerializedName("release_date")
     String releaseDate;
 
     public Integer getVoteCount() {
@@ -159,4 +163,14 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
+    public ContentValues getContentValues() {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DbContract.Movie.COLUMN_MOVIE_ID, getId());
+        contentValues.put(DbContract.Movie.COLUMN_NAME_ORIGINAL_TITLE, getOriginalLanguage());
+        contentValues.put(DbContract.Movie.COLUMN_NAME_OVERVIEW, getOverview());
+        contentValues.put(DbContract.Movie.COLUMN_NAME_POSTER_PATH, getPosterPath());
+        contentValues.put(DbContract.Movie.COLUMN_NAME_RELEASE_DATE, getReleaseDate());
+        contentValues.put(DbContract.Movie.COLUMN_NAME_VOTE_AVERAGE, getVoteAverage());
+        return null;
+    }
 }

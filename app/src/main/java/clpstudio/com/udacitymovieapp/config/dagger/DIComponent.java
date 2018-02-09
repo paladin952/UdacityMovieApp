@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 
 import clpstudio.com.udacitymovieapp.MovieApplication;
 import clpstudio.com.udacitymovieapp.config.dagger.modules.ApplicationModule;
+import clpstudio.com.udacitymovieapp.config.dagger.modules.ContentResolverModule;
 import clpstudio.com.udacitymovieapp.config.dagger.modules.RetrofitModule;
 import clpstudio.com.udacitymovieapp.ui.MainActivity;
 import clpstudio.com.udacitymovieapp.ui.detail.DetailsActivity;
@@ -16,6 +17,7 @@ import dagger.Component;
         modules = {
                 ApplicationModule.class,
                 RetrofitModule.class,
+                ContentResolverModule.class
         }
 )
 @Singleton

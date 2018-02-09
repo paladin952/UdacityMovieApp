@@ -40,6 +40,13 @@
             android:name=".ui.trailers.TrailersListActivity"
             android:exported="false"
             android:parentActivityName=".ui.detail.DetailsActivity"/>
+
+        <provider
+            android:exported="false"
+            android:syncable="true"
+            android:name=".data.contentprovider.MovieContentProvider"
+            android:authorities="clpstudio.com.udacitymovieapp.data.contentprovider.MovieContentProvider"/>
+
     </application>
 
 </manifest>

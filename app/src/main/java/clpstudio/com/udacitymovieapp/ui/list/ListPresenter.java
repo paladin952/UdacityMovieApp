@@ -56,6 +56,8 @@ public class ListPresenter extends BaseMvpPresenter<ListPresenter.View> {
         view().showProgressBar();
         view().hideEmptyText();
 
+        movieRepository.getSaved();
+
         apiService.subscribe(res -> {
             view().showData(res.getResults());
             view().hideProgressBar();
